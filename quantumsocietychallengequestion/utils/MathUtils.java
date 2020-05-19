@@ -35,5 +35,4 @@ public class MathUtils {
             result[i] = array[i].doubleValue();
         return result;
     }
-
 }
