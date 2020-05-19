@@ -3,10 +3,12 @@ package quantumsocietychallengequestion;
 import java.util.ArrayList;
 import java.util.List;
 
+import quantumsocietychallengequestion.utils.MathUtils;
+
 public class QuantumSocietyChallengeQuestion {
 
     public static void main(String[] args) {
-        int challenge = 2;
+        int challenge = 1;
 
         switch (challenge) {
             case 1:
@@ -24,11 +26,11 @@ public class QuantumSocietyChallengeQuestion {
     private static void challengeOne() {
         for (int i = 1; i < 101; i++) {
             if (i % 3 == 0 && i % 5 != 0)
-                System.out.println("Ry");
+                System.out.println("Ry (" + i + ")");
             else if (i % 3 != 0 && i % 5 == 0)
-                System.out.println("an");
+                System.out.println("an (" + i + ")");
             else if (i % 3 == 0 && i % 5 == 0)
-                System.out.println("Ryan");
+                System.out.println("Ryan (" + i + ")");
             else
                 System.out.println(i);
         }
@@ -53,39 +55,8 @@ public class QuantumSocietyChallengeQuestion {
                 set.add((double) i);
         }
         Double[] doubleSet = set.toArray(new Double[set.size()]);
-        double[] doubleSetPrimitive = toPrimitive(doubleSet);
+        double[] doubleSetPrimitive = MathUtils.toPrimitive(doubleSet);
 
-        System.out.println(standardDeviationCalculator(doubleSetPrimitive) + " (SD)");
-    }
-
-    /** Standard deviation calculator. */
-    private static double standardDeviationCalculator(double... values) {
-        List<Double> set = new ArrayList<>();
-
-        for (double value : values)
-            set.add(value);
-        double sum = 0;
-
-        for (int i = 0; i < set.size(); i++)
-            sum = sum + set.get(i);
-        double mean = sum / set.size();
-        double variance = 0;
-
-        for (int i = 0; i < set.size(); i++)
-            variance += (set.get(i) - mean) * (set.get(i) - mean);
-        double standardDeviation = Math.sqrt(variance / (set.size() - 1));
-
-        return standardDeviation;
-    }
-
-    /**
-     * @return Primitive type of the Double class.
-     */
-    private static double[] toPrimitive(Double[] array) {
-        final double[] result = new double[array.length];
-
-        for (int i = 0; i < array.length; i++)
-            result[i] = array[i].doubleValue();
-        return result;
+        System.out.println("SD of non-multiples = " + MathUtils.standardDeviationCalculator(doubleSetPrimitive));
     }
 }

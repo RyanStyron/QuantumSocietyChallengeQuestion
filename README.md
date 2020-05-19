@@ -1,2 +1,2 @@
 # QuantumSocietyChallengeQuestion
-Imagine making a git repository for a one class project.
+Challenge question solutions for the QuantumSociety discord server challenges.
